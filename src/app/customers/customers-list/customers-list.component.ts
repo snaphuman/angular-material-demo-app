@@ -35,9 +35,23 @@ export class CustomersListComponent implements OnInit {
     }
 
     calculateOrders() {
+        this.customersOrderTotal = 0;
         this.filteredCustomers.forEach((customer: ICustomer) => {
             this.customersOrderTotal += customer.orderTotal;
         });
+    }
+
+    filter(data: string) {
+        if (data) {
+            this.filteredCustomers = this.customers.filter((customer: ICustomer) => {
+                return customer.name.toLowerCase().indexOf(data.toLowerCase()) > -1
+                    || customer.city.toLowerCase().indexOf(data.toLowerCase()) > -1
+                    || customer.orderTotal.toString().indexOf(data.toLowerCase()) > -1
+            });
+        } else {
+            this.filteredCustomers = this.customers;
+        }
+        this.calculateOrders();
     }
 
     sort(prop: string) {
