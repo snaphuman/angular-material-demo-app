@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { CoreModule} from './core/core.module';
 import { CustomersModule } from './customers.module';
+import { OrdersModule } from './orders/orders.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 
@@ -16,8 +17,9 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule,
     CoreModule,
     CustomersModule,
-    AppRoutingModule,
-    SharedModule
+    OrdersModule,
+    SharedModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

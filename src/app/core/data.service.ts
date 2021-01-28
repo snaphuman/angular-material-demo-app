@@ -26,9 +26,8 @@ export class DataService {
         return this.http.get<ICustomer[]>(this.baseUrl + 'customers.json')
             .pipe(
                 map((customers) => {
-                    let customer = customers.filter((cust: ICustomer) => {
-                        cust.id === id
-                    });
+                    let customer = customers.filter((cust: ICustomer) => cust.id === id);
+                    console.log(customer)
                     return (customer && customer.length) ? customer[0] : null;
                 }),
                 catchError(this.handleError)
@@ -39,9 +38,7 @@ export class DataService {
         return this.http.get<IOrder[]>(this.baseUrl + 'orders.json')
             .pipe(
                 map(orders => {
-                    let custOrders = orders.filter((order: IOrder) => {
-                        order.customerId === id
-                    });
+                    let custOrders = orders.filter((order: IOrder) => order.customerId === id);
                     return custOrders;
                 }),
                 catchError(this.handleError)
