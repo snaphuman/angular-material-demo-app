@@ -1,21 +1,17 @@
 import { Injectable } from '@angular/core';
+import {Sort} from '@angular/material/sort';
 
 @Injectable()
 export class SorterService {
 
-    property: string;
-    direction: number;
-
     constructor() {
-        this.property = null;
-        this.direction = 1;
     }
 
-    sort(collection: any[], prop: any) {
-        this.property = prop;
-        this.direction = (this.property === prop) ? this.direction * -1 : 1;
+    sort(collection: any[], prop, dir) {
+        const data = collection.slice();
+        const isAsc = dir === 'asc';
 
-        collection.sort((a: any, b:any) => {
+        data.sort((a: any, b:any) => {
             let aVal: any;
             let bVal: any;
 
@@ -31,25 +27,21 @@ export class SorterService {
             if (this.isString(aVal)) aVal = aVal.trim().toUpperCase();
             if (this.isString(bVal)) bVal = bVal.trim().toUpperCase();
 
-            if(aVal === bVal) {
-                return 0;
-            }
-            else if(aVal > bVal) {
-                return this.direction * -1;
-            }
-            else {
-                return this.direction * 1;
-            }
+            return this.compare(aVal, bVal, isAsc)
         });
+
+        return data;
     }
 
     isString(val: any) : boolean {
         return (val && (typeof val === 'string' || val instanceof String));
     }
-
     resolveProperty(path: string, obj: any) {
         return path.split('.').reduce(function(prev, curr) {
             return (prev ? prev[curr] : undefined);
         }, obj || self)
+    }
+    compare(a: number | string, b: number | string, isAsc: boolean) {
+        return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
     }
 }

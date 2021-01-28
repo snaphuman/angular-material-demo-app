@@ -9,13 +9,18 @@ import { FilterTextboxComponent } from './customers/customers-list/filter-textbo
 
 import { CustomersRoutingModule } from './customers/customers-routing.module';
 
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
     FormsModule,
-    CustomersRoutingModule
+    CustomersRoutingModule,
+    MatTableModule,
+    MatSortModule
   ],
   declarations: [
     CustomersComponent,

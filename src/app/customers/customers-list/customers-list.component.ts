@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { DataSource } from '@angular/cdk/collections';
 
+import {Sort} from '@angular/material/sort';
 import { SorterService } from '../../core/sorter.service';
 import { ICustomer } from '../../shared/interfaces';
 
@@ -8,6 +10,7 @@ import { ICustomer } from '../../shared/interfaces';
     templateUrl: './customers-list.component.html'
 })
 export class CustomersListComponent implements OnInit {
+
     private _customers: ICustomer[];
     @Input() get customers(): ICustomer[] {
         return this._customers;
@@ -24,6 +27,8 @@ export class CustomersListComponent implements OnInit {
     customersOrderTotal: number;
     currencyCode: string;
 
+    displayedColumns: string[] = ['id', 'name', 'city', 'orderTotal'];
+
     constructor(private sorterService: SorterService) {
         this._customers = [];
         this.filteredCustomers = [];
@@ -32,7 +37,6 @@ export class CustomersListComponent implements OnInit {
     }
     
     ngOnInit() {
-
     }
 
     calculateOrders() {
@@ -55,8 +59,10 @@ export class CustomersListComponent implements OnInit {
         this.calculateOrders();
     }
 
-    sort(prop: string) {
-        this.sorterService.sort(this.filteredCustomers, prop);
-       
+    sort(sort: Sort) {
+        const prop = sort.active;
+        const currDir = sort.direction;
+
+        this.filteredCustomers = this.sorterService.sort(this.filteredCustomers, prop, currDir);
     }
 }
