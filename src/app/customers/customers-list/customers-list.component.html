@@ -1,3 +1,5 @@
+
+<filter-textbox (changed)="filter($event)"></filter-textbox>
 <table mat-table [dataSource]="filteredCustomers" class="mat-elevation-z8" matSort (matSortChange)="sort($event)">
     <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>

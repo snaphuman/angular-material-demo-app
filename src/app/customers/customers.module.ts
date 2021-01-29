@@ -11,7 +11,8 @@ import { CustomersRoutingModule } from './customers-routing.module';
 
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
-
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   imports: [
@@ -20,7 +21,9 @@ import { MatSortModule } from '@angular/material/sort';
     FormsModule,
     CustomersRoutingModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   declarations: [
     CustomersComponent,
