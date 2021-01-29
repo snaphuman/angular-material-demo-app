@@ -10,10 +10,9 @@ export class AppComponent implements OnInit {
   title: string;
 
   constructor() {
-    this.title = '';
   }
 
   ngOnInit() {
-    this.title = 'Hola, mundo.';
+    this.title = 'Business Dashboard';
   }
 }
