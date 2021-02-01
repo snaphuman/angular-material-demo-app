@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { DataSource } from '@angular/cdk/collections';
 
 import {Sort} from '@angular/material/sort';
@@ -29,7 +30,10 @@ export class CustomersListComponent implements OnInit {
 
     displayedColumns: string[] = ['id', 'name', 'city', 'orderTotal'];
 
-    constructor(private sorterService: SorterService) {
+    constructor(
+        private sorterService: SorterService,
+        private router: Router
+    ) {
         this._customers = [];
         this.filteredCustomers = [];
         this.customersOrderTotal = 0;
@@ -37,6 +41,10 @@ export class CustomersListComponent implements OnInit {
     }
 
     ngOnInit() {
+    }
+
+    navigateTo(row: any) {
+        this.router.navigate(['/orders',row.id]);
     }
 
     calculateOrders() {
