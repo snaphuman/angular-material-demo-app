@@ -8,6 +8,7 @@ import { ICustomer } from '../../shared/interfaces';
 
 @Component({
     selector: 'app-customers-list',
+    styleUrls: ['./customers-list.component.sass'],
     templateUrl: './customers-list.component.html'
 })
 export class CustomersListComponent implements OnInit {

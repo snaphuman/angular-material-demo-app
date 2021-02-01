@@ -22,42 +22,6 @@
         <td mat-footer-cell *matFooterCellDef> {{ customersOrderTotal | currency }} </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="navigateTo(row)" class="row-hover"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="navigateTo(row)" class="row-hover element-row"></tr>
     <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
 </table>
-
-
-
-<!-- <filter-textbox (changed)="filter($event)"></filter-textbox> -->
-<!-- <br /> -->
-<!-- <br /> -->
-<!-- <table class="table table-hover"> -->
-<!--     <thead> -->
-<!--         <tr> -->
-<!--             <th (click)="sort('name')">Name</th> -->
-<!--             <th (click)="sort('city')">City</th> -->
-<!--             <th (click)="sort('orderTotal')">Order Total</th> -->
-<!--         </tr> -->
-<!--     </thead> -->
-<!--     <tr *ngFor="let customer of filteredCustomers"> -->
-<!--         <td> -->
-<!--             <a [routerLink]="['/orders', customer.id]"> -->
-<!--                 {{ customer.name | capitalize }} -->
-<!--             </a> -->
-<!--         </td> -->
-<!--         <td>{{ customer.city }}</td> -->
-<!--         <td>{{ customer.orderTotal | currency:currencyCode:'symbol' }}</td> -->
-<!--     </tr> -->
-<!--     <tr *ngIf="filteredCustomers && filteredCustomers.length"> -->
-<!--         <td colspan="2">&nbsp;</td> -->
-<!--         <td> -->
-<!--             {{ customersOrderTotal | currency:currencyCode:'symbol'  }} -->
-
-<!--         </td> -->
-<!--     </tr> -->
-<!--     <tr *ngIf="!filteredCustomers || !filteredCustomers.length"> -->
-<!--         <td colspan="4">No customers found</td> -->
-<!--     </tr> -->
-<!-- </table> -->
-<!-- Number of Customers: {{ filteredCustomers.length }} -->
-<!-- <br /> -->
