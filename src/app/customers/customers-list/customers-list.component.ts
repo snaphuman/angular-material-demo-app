@@ -35,7 +35,7 @@ export class CustomersListComponent implements OnInit {
         this.customersOrderTotal = 0;
         this.currencyCode = 'USD'
     }
-    
+
     ngOnInit() {
     }
 
