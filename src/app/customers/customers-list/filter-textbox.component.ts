@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'filter-textbox',
+    styleUrls: ['./customers-list.component.sass'],
     template: `
 <mat-form-field>
   <mat-label>Filter</mat-label>
