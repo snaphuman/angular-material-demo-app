@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { DataSource } from '@angular/cdk/collections';
 
 import {Sort} from '@angular/material/sort';
 import { SorterService } from '../../core/sorter.service';

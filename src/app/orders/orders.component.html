@@ -1,13 +1,21 @@
 <div *ngIf="customer">
     <h1>Orders for {{ customer.name | capitalize }}</h1>
 
-    <table class="table table-hover orders-table" 
-           *ngFor="let order of orders">
-        <tr *ngFor="let orderItem of order.orderItems">
-            <td>{{ orderItem.productName }}</td>
-            <td>{{ orderItem.itemCost | currency:'USD':'symbol' }}</td>    
-        </tr>
-    </table>
+    <mat-table [dataSource]="orderItems" class="mat-elevation-z8">
+      <ngContainer matColumnDef="productName">
+        <mat-header-cell *matHeaderCellDef> Product name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.productName }} </mat-cell>
+        <mat-footer-cell *matFooterCellDef> Total </mat-footer-cell>
+      </ngContainer>
+      <ngContainer matColumnDef="itemCost">
+        <mat-header-cell *matHeaderCellDef> Item cost </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.itemCost }} </mat-cell>
+        <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+      </ngContainer>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-footer-row *matFooterRowDef="displayedColumns"></mat-footer-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" class="row-hover no-cursor"></mat-row>
+    </mat-table>
 </div>
 <div *ngIf="!customer">
    No customer found

@@ -7,7 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { OrdersComponent } from './orders.component';
 import { OrdersRoutingModule } from './orders-routing.module';
 
-
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [OrdersComponent],
@@ -15,7 +15,8 @@ import { OrdersRoutingModule } from './orders-routing.module';
     CommonModule,
     FormsModule,
     OrdersRoutingModule,
-    SharedModule
+    SharedModule,
+    MatTableModule
   ]
 })
 export class OrdersModule { }

@@ -13,18 +13,28 @@ export class OrdersComponent implements OnInit {
 
   orders: IOrder[];
   customer: ICustomer;
+  orderItems: any[];
+
+  displayedColumns: string[] = ['productName', 'itemCost'];
 
   constructor(private dataService: DataService,
               private route: ActivatedRoute ) {
     this.orders = [];
   }
 
+  getOrderItems(orders) {
+    orders.forEach((order) => {
+      this.orderItems = order.orderItems
+    })
+  }
+
   ngOnInit(): void {
     let id = +this.route.snapshot.paramMap.get('id');
 
     this.dataService.getOrders(id).subscribe((orders: IOrder[]) => {
-      this.orders = orders
+      this.getOrderItems(orders);
     });
+
 
     this.dataService.getCustomer(id).subscribe((customer: ICustomer) => {
       this.customer = customer;
