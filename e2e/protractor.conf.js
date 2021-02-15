@@ -12,8 +12,13 @@ exports.config = {
   specs: [
     './src/**/*.e2e-spec.ts'
   ],
-  capabilities: {
-    browserName: 'chrome'
+  capabilities:
+  {
+    'browserName': 'chrome',
+    'chromeOptions': {
+      'w3c': false,
+      'args': [ "--no-sandbox", "--headless", "--window-size=1366,768"],
+    },
   },
   directConnect: true,
   SELENIUM_PROMISE_MANAGER: false,
@@ -21,7 +26,7 @@ exports.config = {
   framework: 'jasmine',
   jasmineNodeOpts: {
     showColors: true,
-    defaultTimeoutInterval: 30000,
+    defaultTimeoutInterval: 180000,
     print: function() {}
   },
   onPrepare() {
