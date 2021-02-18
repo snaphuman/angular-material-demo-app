@@ -2,15 +2,10 @@ import { browser, logging } from 'protractor';
 import { AppPage } from './app.po';
 
 describe('workspace-project App', () => {
-  let page: AppPage;
+  let page: AppPage = new AppPage();
 
-  beforeEach(() => {
-    page = new AppPage();
-  });
-
-  it('should redirect to customers page', async () => {
-    await page.navigateTo('/customers');
-    expect(await page.getTitleText()).toEqual('Customers');
+  it('should navigate to main page', async () => {
+    await page.navigateTo('/');
   });
 
   afterEach(async () => {
