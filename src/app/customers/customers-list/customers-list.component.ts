@@ -1,16 +1,25 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, QueryList, ViewChild, ViewChildren, ChangeDetectionStrategy, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import {Sort} from '@angular/material/sort';
 import { SorterService } from '../../core/sorter.service';
 import { ICustomer } from '../../shared/interfaces';
+import { SplitAreaDirective, SplitComponent } from 'angular-split';
 
 @Component({
     selector: 'app-customers-list',
+    changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['./customers-list.component.sass'],
     templateUrl: './customers-list.component.html'
 })
-export class CustomersListComponent implements OnInit {
+export class CustomersListComponent implements AfterViewInit {
+
+    @ViewChild(SplitComponent) splitEl: SplitComponent
+    @ViewChildren(SplitAreaDirective) areasEl: QueryList<SplitAreaDirective>
+
+    ngAfterViewInit() {
+      console.log('Area Components: ', this.areasEl);
+    }
 
     private _customers: ICustomer[];
     @Input() get customers(): ICustomer[] {
@@ -38,9 +47,6 @@ export class CustomersListComponent implements OnInit {
         this.filteredCustomers = [];
         this.customersOrderTotal = 0;
         this.currencyCode = 'USD'
-    }
-
-    ngOnInit() {
     }
 
     navigateTo(row: any) {
@@ -72,5 +78,13 @@ export class CustomersListComponent implements OnInit {
         const currDir = sort.direction;
 
         this.filteredCustomers = this.sorterService.sort(this.filteredCustomers, prop, currDir);
+    }
+
+    onClose1(newSize = 0) {
+      this.areasEl.first.collapse(newSize)
+    }
+
+    onExpand1() {
+      this.areasEl.first.expand()
     }
 }

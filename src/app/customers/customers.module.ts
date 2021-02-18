@@ -14,6 +14,10 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
+import { AngularSplitModule } from 'angular-split'
+
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -23,13 +27,15 @@ import { MatInputModule } from '@angular/material/input';
     MatTableModule,
     MatSortModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    AngularSplitModule,
+    FlexLayoutModule
   ],
   declarations: [
     CustomersComponent,
     CustomersListComponent,
     FilterTextboxComponent
   ],
-  exports: [ CustomersComponent ]
+  exports: [ CustomersComponent, CustomersListComponent ]
 })
 export class CustomersModule { }
