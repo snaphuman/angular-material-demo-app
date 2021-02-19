@@ -1,44 +1,50 @@
-<div class="container">
-  <div style="height: 600px;">
-    <as-split [unit]="'pixel'">
-      <as-split-area [size]="200">
-        <div style="height: 100%;display: flex;justify-content: center;align-items: center;  background-color: antiquewhite;">
-          <div class="flex-container" fxLayout="column wrap" fxLayoutGap="30px">
-            <filter-textbox fxFlex="grow" (changed)="filter($event)"></filter-textbox>
-            <hr/>
-            <mat-table fxFlex="grow" [dataSource]="filteredCustomers" class="mat-elevation-z8" matSort (matSortChange)="sort($event)">
-              <ng-container matColumnDef="id">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{ element.id }} </mat-cell>
-                <mat-footer-cell *matFooterCellDef> Total </mat-footer-cell>
-              </ng-container>
-              <ng-container matColumnDef="name">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{ element.name | capitalize }} </mat-cell>
-                <mat-footer-cell *matFooterCellDef></mat-footer-cell>
-              </ng-container>
-              <ng-container matColumnDef="city">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> City </mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{ element.city }} </mat-cell>
-                <mat-footer-cell *matFooterCellDef></mat-footer-cell>
-              </ng-container>
-              <ng-container matColumnDef="orderTotal">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> Order total </mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{ element.orderTotal | currency }} </mat-cell>
-                <mat-footer-cell *matFooterCellDef> {{ customersOrderTotal | currency }} </mat-footer-cell>
-              </ng-container>
-              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-              <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="navigateTo(row)" class="row-hover"></mat-row>
-              <mat-footer-row *matFooterRowDef="displayedColumns"></mat-footer-row>
-            </mat-table>
-          </div>
+<mat-card fxFlex fxFlexAlign="start">
+  <mat-card-content>
+    <div fxLayout="column wrap" fxLayoutGap="25px">
+      <div class="container">
+        <div style="height: 600px;">
+          <as-split [unit]="'pixel'">
+            <as-split-area>
+              <div style="height: 100%; overflow-x: auto; background-color: antiquewhite;">
+                <div class="flex-container" fxLayout="column wrap"  fxLayoutGap="30px">
+                  <filter-textbox fxFlex="grow" (changed)="filter($event)"></filter-textbox>
+                  <hr/>
+                  <mat-table fxFlex="grow" [dataSource]="filteredCustomers" class="mat-elevation-z8" matSort (matSortChange)="sort($event)">
+                    <ng-container matColumnDef="id">
+                      <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
+                      <mat-cell *matCellDef="let element"> {{ element.id }} </mat-cell>
+                      <mat-footer-cell *matFooterCellDef> Total </mat-footer-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="name">
+                      <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+                      <mat-cell *matCellDef="let element"> {{ element.name | capitalize }} </mat-cell>
+                      <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="city">
+                      <mat-header-cell *matHeaderCellDef mat-sort-header> City </mat-header-cell>
+                      <mat-cell *matCellDef="let element"> {{ element.city }} </mat-cell>
+                      <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="orderTotal">
+                      <mat-header-cell *matHeaderCellDef mat-sort-header> Order total </mat-header-cell>
+                      <mat-cell *matCellDef="let element"> {{ element.orderTotal | currency }} </mat-cell>
+                      <mat-footer-cell *matFooterCellDef> {{ customersOrderTotal | currency }} </mat-footer-cell>
+                    </ng-container>
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="navigateTo(row)" class="row-hover"></mat-row>
+                    <mat-footer-row *matFooterRowDef="displayedColumns"></mat-footer-row>
+                  </mat-table>
+                </div>
+              </div>
+            </as-split-area>
+            <as-split-area [size]="0">
+              <div style="height: 100%;display: flex;justify-content: center;align-items: center;  background-color: burlywood;">
+                <p>RIGHT</p>
+              </div>
+            </as-split-area>
+          </as-split>
         </div>
-      </as-split-area>
-      <as-split-area>
-        <div style="height: 100%;display: flex;justify-content: center;align-items: center;  background-color: burlywood;">
-          <p>RIGHT</p>
-        </div>
-      </as-split-area>
-    </as-split>
-  </div>
-</div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

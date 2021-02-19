@@ -13,6 +13,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
 
 import { AngularSplitModule } from 'angular-split'
 
@@ -29,6 +30,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatFormFieldModule,
     MatInputModule,
     AngularSplitModule,
+    MatCardModule,
     FlexLayoutModule
   ],
   declarations: [

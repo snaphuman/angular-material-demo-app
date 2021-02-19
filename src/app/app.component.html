@@ -1,6 +1,8 @@
-<mat-toolbar color="primary"><h1>{{ title }}</h1></mat-toolbar>
-<mat-card>
-  <mat-card-content>
+<div fxLayout="column" class="bigger" fxFlexFill>
+  <div fxLayout="row">
+    <mat-toolbar color="primary"><h1>{{ title }}</h1></mat-toolbar>
+  </div>
+  <div fxLayout="column" fxLayoutGap="20px" fxFlexFill>
     <router-outlet></router-outlet>
-  </mat-card-content>
-</mat-card>
+  </div>
+</div>
