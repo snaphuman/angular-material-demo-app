@@ -33,6 +33,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatCardModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

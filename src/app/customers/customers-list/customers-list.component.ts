@@ -21,8 +21,8 @@ export class CustomersListComponent implements AfterViewInit {
       console.log('Area Components: ', this.areasEl);
     }
 
-    private _customers: ICustomer[];
-    @Input() get customers(): ICustomer[] {
+        private _customers: ICustomer[];
+        @Input() get customers(): ICustomer[] {
         return this._customers;
     }
 
@@ -33,6 +33,7 @@ export class CustomersListComponent implements AfterViewInit {
         }
     }
 
+    id: number;
     filteredCustomers: ICustomer[];
     customersOrderTotal: number;
     currencyCode: string;
@@ -49,8 +50,8 @@ export class CustomersListComponent implements AfterViewInit {
         this.currencyCode = 'USD'
     }
 
-    navigateTo(row: any) {
-        this.router.navigate(['/orders',row.id]);
+    selectedCustomer(row: any) {
+        this.id = row.id;
     }
 
     calculateOrders() {

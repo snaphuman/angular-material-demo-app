@@ -31,7 +31,7 @@
                       <mat-footer-cell *matFooterCellDef> {{ customersOrderTotal | currency }} </mat-footer-cell>
                     </ng-container>
                     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-                    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="navigateTo(row)" class="row-hover"></mat-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectedCustomer(row)" class="row-hover"></mat-row>
                     <mat-footer-row *matFooterRowDef="displayedColumns"></mat-footer-row>
                   </mat-table>
                 </div>
@@ -39,7 +39,7 @@
             </as-split-area>
             <as-split-area [size]="0">
               <div style="height: 100%;display: flex;justify-content: center;align-items: center;  background-color: burlywood;">
-                <p>RIGHT</p>
+                <app-orders [id]="id"></app-orders>
               </div>
             </as-split-area>
           </as-split>

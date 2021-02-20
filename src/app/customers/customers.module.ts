@@ -18,12 +18,15 @@ import { MatCardModule } from '@angular/material/card';
 import { AngularSplitModule } from 'angular-split'
 
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { OrdersModule } from '../orders/orders.module';
+import { OrdersComponent } from '../orders/orders.component';
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
     FormsModule,
+    OrdersModule,
     CustomersRoutingModule,
     MatTableModule,
     MatSortModule,
@@ -31,7 +34,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatInputModule,
     AngularSplitModule,
     MatCardModule,
-    FlexLayoutModule
+    FlexLayoutModule,
   ],
   declarations: [
     CustomersComponent,
