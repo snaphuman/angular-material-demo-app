@@ -14,12 +14,13 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatIconModule } from '@angular/material/icon';
 
 import { AngularSplitModule } from 'angular-split'
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { OrdersModule } from '../orders/orders.module';
-import { OrdersComponent } from '../orders/orders.component';
 
 @NgModule({
   imports: [
@@ -35,6 +36,8 @@ import { OrdersComponent } from '../orders/orders.component';
     AngularSplitModule,
     MatCardModule,
     FlexLayoutModule,
+    MatButtonToggleModule,
+    MatIconModule
   ],
   declarations: [
     CustomersComponent,

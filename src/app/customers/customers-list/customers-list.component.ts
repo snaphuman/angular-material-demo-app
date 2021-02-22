@@ -34,6 +34,7 @@ export class CustomersListComponent implements AfterViewInit {
     }
 
     id: number;
+    direction: 'horizontal' | 'vertical';
     filteredCustomers: ICustomer[];
     customersOrderTotal: number;
     currencyCode: string;
@@ -42,7 +43,6 @@ export class CustomersListComponent implements AfterViewInit {
 
     constructor(
         private sorterService: SorterService,
-        private router: Router
     ) {
         this._customers = [];
         this.filteredCustomers = [];
@@ -52,6 +52,7 @@ export class CustomersListComponent implements AfterViewInit {
 
     selectedCustomer(row: any) {
         this.id = row.id;
+        this.openDetail();
     }
 
     calculateOrders() {
@@ -81,11 +82,23 @@ export class CustomersListComponent implements AfterViewInit {
         this.filteredCustomers = this.sorterService.sort(this.filteredCustomers, prop, currDir);
     }
 
-    onClose1(newSize = 0) {
-      this.areasEl.first.collapse(newSize)
+    openDetail() {
+      this.areasEl.first.collapse(50);
+      this.areasEl.last.collapse(50);
     }
 
-    onExpand1() {
-      this.areasEl.first.expand()
+    closeDetail() {
+      this.areasEl.last.collapse(0, 'right');
+      this.areasEl.first.expand();
     }
+
+    expandDetail() {
+      this.areasEl.first.collapse(0);
+    }
+
+    toggleDirection (direction) {
+      this.direction = direction;
+    }
+
+
 }

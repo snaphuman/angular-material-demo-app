@@ -3,8 +3,8 @@
     <div fxLayout="column wrap" fxLayoutGap="25px">
       <div class="container">
         <div style="height: 600px;">
-          <as-split [unit]="'pixel'">
-            <as-split-area>
+          <as-split [unit]="'percent'" [direction]="direction">
+            <as-split-area [size]="100">
               <div style="height: 100%; overflow-x: auto; background-color: antiquewhite;">
                 <div class="flex-container" fxLayout="column wrap"  fxLayoutGap="30px">
                   <filter-textbox fxFlex="grow" (changed)="filter($event)"></filter-textbox>
@@ -39,7 +39,23 @@
             </as-split-area>
             <as-split-area [size]="0">
               <div style="height: 100%;display: flex;justify-content: center;align-items: center;  background-color: burlywood;">
-                <app-orders [id]="id"></app-orders>
+                <div class="flex-container" fxLayout="column wrap" fxFlex="grow" fxLayoutGap="30px" fxFlexAlign="start">
+                  <mat-button-toggle-group #group="matButtonToggleGroup">
+                    <mat-button-toggle value="left" aria-label="Horizontal split" (click)="toggleDirection('vertical')">
+                      <mat-icon>horizontal_split</mat-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle value="center" aria-label="Vertical split" (click)="toggleDirection('horizontal')">
+                      <mat-icon>vertical_split</mat-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle value="right" aria-label="Open in full" (click)="expandDetail()">
+                      <mat-icon>open_in_full</mat-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle value="justify" aria-label="Close fullscreen" (click)="closeDetail()">
+                      <mat-icon>close_fullscreen</mat-icon>
+                    </mat-button-toggle>
+                  </mat-button-toggle-group>
+                  <app-orders [id]="id"></app-orders>
+                </div>
               </div>
             </as-split-area>
           </as-split>
