@@ -13,7 +13,13 @@ describe ('Customers Page', () => {
   it('should have corresponding header names', async () => {
     let columns = ['Id', 'Name', 'City', 'Order total'];
 
-    expect(await page.tableHeaders()).toEqual(columns);
+    expect(await page.checkTableHeaders()).toEqual(columns);
 
   });
+
+  it('should have at least one result in table', async() => {
+
+    let result = await page.checkIfTableHasResults()
+    expect(result).toBeGreaterThan(0);
+  })
 });
