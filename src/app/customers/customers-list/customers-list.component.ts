@@ -94,6 +94,7 @@ export class CustomersListComponent implements AfterViewInit {
 
     expandDetail() {
       this.areasEl.first.collapse(0);
+      this.areasEl.last.collapse(100);
     }
 
     toggleDirection (direction) {

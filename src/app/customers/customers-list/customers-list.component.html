@@ -5,58 +5,56 @@
         <div style="height: 600px;">
           <as-split [unit]="'percent'" [direction]="direction">
             <as-split-area [size]="100">
-              <div style="height: 100%; overflow-x: auto; background-color: antiquewhite;">
-                <div class="flex-container" fxLayout="column wrap"  fxLayoutGap="30px">
-                  <filter-textbox fxFlex="grow" (changed)="filter($event)"></filter-textbox>
-                  <hr/>
-                  <mat-table fxFlex="grow" [dataSource]="filteredCustomers" class="mat-elevation-z8" matSort (matSortChange)="sort($event)">
-                    <ng-container matColumnDef="id">
-                      <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
-                      <mat-cell *matCellDef="let element"> {{ element.id }} </mat-cell>
-                      <mat-footer-cell *matFooterCellDef> Total </mat-footer-cell>
-                    </ng-container>
-                    <ng-container matColumnDef="name">
-                      <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
-                      <mat-cell *matCellDef="let element"> {{ element.name | capitalize }} </mat-cell>
-                      <mat-footer-cell *matFooterCellDef></mat-footer-cell>
-                    </ng-container>
-                    <ng-container matColumnDef="city">
-                      <mat-header-cell *matHeaderCellDef mat-sort-header> City </mat-header-cell>
-                      <mat-cell *matCellDef="let element"> {{ element.city }} </mat-cell>
-                      <mat-footer-cell *matFooterCellDef></mat-footer-cell>
-                    </ng-container>
-                    <ng-container matColumnDef="orderTotal">
-                      <mat-header-cell *matHeaderCellDef mat-sort-header> Order total </mat-header-cell>
-                      <mat-cell *matCellDef="let element"> {{ element.orderTotal | currency }} </mat-cell>
-                      <mat-footer-cell *matFooterCellDef> {{ customersOrderTotal | currency }} </mat-footer-cell>
-                    </ng-container>
-                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-                    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectedCustomer(row)" class="row-hover"></mat-row>
-                    <mat-footer-row *matFooterRowDef="displayedColumns"></mat-footer-row>
-                  </mat-table>
-                </div>
+              <div class="flex-container" fxLayout="column wrap"  fxLayoutGap="30px">
+                <filter-textbox fxFlex="grow" (changed)="filter($event)"></filter-textbox>
+                <hr/>
+                <mat-table fxFlex="grow" [dataSource]="filteredCustomers" class="mat-elevation-z8" matSort (matSortChange)="sort($event)">
+                  <ng-container matColumnDef="id">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{ element.id }} </mat-cell>
+                    <mat-footer-cell *matFooterCellDef> Total </mat-footer-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="name">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{ element.name | capitalize }} </mat-cell>
+                    <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="city">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> City </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{ element.city }} </mat-cell>
+                    <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="orderTotal">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Order total </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{ element.orderTotal | currency }} </mat-cell>
+                    <mat-footer-cell *matFooterCellDef> {{ customersOrderTotal | currency }} </mat-footer-cell>
+                  </ng-container>
+                  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                  <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectedCustomer(row)" class="row-hover"></mat-row>
+                  <mat-footer-row *matFooterRowDef="displayedColumns"></mat-footer-row>
+                </mat-table>
               </div>
+
             </as-split-area>
             <as-split-area [size]="0">
-              <div style="height: 100%;display: flex;justify-content: center;align-items: center;  background-color: burlywood;">
-                <div class="flex-container" fxLayout="column wrap" fxFlex="grow" fxLayoutGap="30px" fxFlexAlign="start">
-                  <mat-button-toggle-group #group="matButtonToggleGroup">
-                    <mat-button-toggle value="left" aria-label="Horizontal split" (click)="toggleDirection('vertical')">
-                      <mat-icon>horizontal_split</mat-icon>
-                    </mat-button-toggle>
-                    <mat-button-toggle value="center" aria-label="Vertical split" (click)="toggleDirection('horizontal')">
-                      <mat-icon>vertical_split</mat-icon>
-                    </mat-button-toggle>
-                    <mat-button-toggle value="right" aria-label="Open in full" (click)="expandDetail()">
-                      <mat-icon>open_in_full</mat-icon>
-                    </mat-button-toggle>
-                    <mat-button-toggle value="justify" aria-label="Close fullscreen" (click)="closeDetail()">
-                      <mat-icon>close_fullscreen</mat-icon>
-                    </mat-button-toggle>
-                  </mat-button-toggle-group>
-                  <app-orders [id]="id"></app-orders>
-                </div>
+              <div *ngIf="id" class="flex-container" fxLayout="column wrap" fxFlex="grow" fxLayoutGap="30px" fxFlexAlign="start">
+                <mat-button-toggle-group #group="matButtonToggleGroup">
+                  <mat-button-toggle value="left" aria-label="Horizontal split" (click)="toggleDirection('vertical')">
+                    <mat-icon>horizontal_split</mat-icon>
+                  </mat-button-toggle>
+                  <mat-button-toggle value="center" aria-label="Vertical split" (click)="toggleDirection('horizontal')">
+                    <mat-icon>vertical_split</mat-icon>
+                  </mat-button-toggle>
+                  <mat-button-toggle value="right" aria-label="Open in full" (click)="expandDetail()">
+                    <mat-icon>open_in_full</mat-icon>
+                  </mat-button-toggle>
+                  <mat-button-toggle value="justify" aria-label="Close fullscreen" (click)="closeDetail()">
+                    <mat-icon>close_fullscreen</mat-icon>
+                  </mat-button-toggle>
+                </mat-button-toggle-group>
+                <app-orders [id]="id"></app-orders>
               </div>
+
             </as-split-area>
           </as-split>
         </div>
