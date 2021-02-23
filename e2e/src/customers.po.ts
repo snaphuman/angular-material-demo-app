@@ -5,6 +5,7 @@ export class CustomersPage {
 
   pageTitle = element(by.css('app-customers h1'));
   tableResults = element.all(by.css('.mat-row'));
+  userOrders = element(by.css('app-orders'));
 
 
   async navigateTo(): Promise<unknown> {
@@ -25,5 +26,15 @@ export class CustomersPage {
   async checkIfTableHasResults(): Promise<number> {
 
     return this.tableResults.count();
+  }
+
+  async selectFirstUser(): Promise<ElementFinder> {
+
+    return this.tableResults.get(0).element(by.css('.mat-column-id'));
+  }
+
+  async showOrders(): Promise<boolean> {
+
+    return this.userOrders.isPresent();
   }
 }
